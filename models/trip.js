@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   Trip.associate = function(models) {
     // associations can be defined here
     Trip.belongsTo(models.Driver, {foreignKey: 'DriverId'})
+    Trip.hasMany(models.RiderTrip)
+    Trip.belongsToMany(models.Rider,{through: models.RiderTrip})
   };
 
   Trip.prototype.getFullName = function() {

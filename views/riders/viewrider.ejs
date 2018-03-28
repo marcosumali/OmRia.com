@@ -14,6 +14,7 @@
   <% data.forEach(data =>{ %>
     <tr>
       <td><%= i++ %></td>
+
       <td><%= data.getFullName() %></td>
       <td><%= data.Email %></td>
       <td><%= data.Phone %></td>
@@ -21,8 +22,14 @@
       <td><a href="/riders/update/<%= data.id %>">Update</a></td>
       <td><a href="/riders/delete/<%= data.id %>" onclick="return confirm('delete this ?');">Delete</a></td>
     </tr>
-
+  
   <% })%>
+  <%=
+
+
+
+
+  %>
 </table>
 
 <a href="/">Back</a>

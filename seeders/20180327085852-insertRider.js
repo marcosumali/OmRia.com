@@ -17,7 +17,7 @@ module.exports = {
       LastName:"Fakhrureza",
       Email:"eki@example.com",
       Phone:"087777777",
-      Gender:"male",
+      Gender:"Male",
       createdAt:new Date(),
       updatedAt:new Date(),
       Password:"aaaaa"
@@ -27,7 +27,7 @@ module.exports = {
       LastName:"Nurani",
       Email:"lesley@example.com",
       Phone:"081111111",
-      Gender:"female",
+      Gender:"Female",
       createdAt:new Date(),
       updatedAt:new Date(),
       Password:"bbbbb"
@@ -37,7 +37,7 @@ module.exports = {
       LastName:"Fitriani",
       Email:"odette@example.com",
       Phone:"08222222",
-      Gender:"female",
+      Gender:"Female",
       createdAt:new Date(),
       updatedAt:new Date(),
       Password:"ccccc"
@@ -47,7 +47,7 @@ module.exports = {
       LastName:"Balmond",
       Email:"balmond@example.com",
       Phone:"083333333",
-      Gender:"male",
+      Gender:"Male",
       createdAt:new Date(),
       updatedAt:new Date(),
       Password:"ddddd"
@@ -57,7 +57,7 @@ module.exports = {
       LastName:"Sunandar",
       Email:"alu@example.com",
       Phone:"084444444",
-      Gender:"male",
+      Gender:"Male",
       createdAt:new Date(),
       updatedAt:new Date(),
       Password:"eeeee"
