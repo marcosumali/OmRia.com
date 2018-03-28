@@ -12,8 +12,9 @@
       <table border='1'>
           <tr>
             <td><center>Id</center></td>
-            <td><center>TripId</center></td>
-            <td><center>RiderId</center></td>
+            <td><center>Trip</center></td>
+            <td><center>Rider</center></td>
+            <td><center>Rider Gender</center></td>
             <td><center>Donation</center></td>
             <td colspan=2><center>Action</center></td>
 
@@ -22,11 +23,15 @@
         <% data.forEach(data =>{ %>
           <tr>
             <td><%= i++ %></td>
-            <td><%= data.TripId %></td>
-            <td><%= data.Rider.id %></td>
+
+            <td><a href="/ridertrips/<%= data.TripId %>/viewTrips"><%= data.TripId %></a></td>
+            <td><%=
+              data.Rider.getFullName()
+            %></td>
+            <td><%= data.Rider.Gender %></td>
             <td><%= my_helper.formatuang(data.Donation)  %></td>
-            <td><a href="/ridertrips/<%= data.id %>/edit">Update</a></td>
-            <td><a href="/ridertrips/<%= data.id%>/delete" onclick="return confirm('delete this ?');">Delete</a></td>
+            <td><a href="/ridertrips/<%= i %>/edit">Update</a></td>
+            <td><a href="/ridertrips/<%= i %>/delete" onclick="return confirm('delete this ?');">Delete</a></td>
           </tr>
 
         <% })%>
