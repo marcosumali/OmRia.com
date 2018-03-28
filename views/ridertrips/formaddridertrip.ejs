@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <body>
+
+        <h1>Add</h1>
+        <p style ="color:red"><%= data_error.error %></p>
+        <form name="form" method="POST" action="/ridertrips/add">
+        <table>
+
+            <tr>
+            <td>Trip Id</td>
+            <td><input type="text" name="RiderId" required></td>
+            </tr>
+            <tr>
+            <td>Donation</td>
+            <td><input type="text" name="Donation" required></td>
+            </tr>
+
+            <tr>
+            <td>Riders</td>
+            <td><select name="TripId">
+                <option value="" selected> </option>
+              <%data.forEach((data) =>
+              {
+                %>
+                <option value="<%= data.id %>"> <%=data.FirstName +' '+data.LastName%> </option>
+              <%})%>
+              </select></td>
+            </tr>
+            <tr>
+            <td><input type="submit" value="Save" ></td>
+            </tr>
+
+        </table>
+        </form>
+    </body>
+
+  </body>
+</html>

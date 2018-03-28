@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "maspsql",
-    "password": "katakunci",
+    "username": "admin",
+    "password": 12345,
     "database": "omria_db",
     "host": "127.0.0.1",
     "dialect": "postgres"

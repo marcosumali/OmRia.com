@@ -8,5 +8,10 @@ routes.get('/', function(req,res) {
 
 routes.use('/drivers', require('./drivers.js'))
 routes.use('/trips', require('./trips.js'))
+const riders = require('./riders')
+const ridertrips = require('./ridertrips')
+routes.use('/riders',riders)
+routes.use('/ridertrips',ridertrips)
+
 
 module.exports = routes;

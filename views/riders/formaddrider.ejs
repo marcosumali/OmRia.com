@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Add</h1>
+    <p style ="color:red"><%= data_error.error %></p>
+    <form name="form" method="POST" action="/riders/add">
+    <table>
+        <tr>
+        <td>First Name</td>
+        <td><input type="text" name="FirstName" required></td>
+        </tr>
+        <tr>
+        <td>Last Name</td>
+        <td><input type="text" name="LastName" required></td>
+        </tr>
+        <tr>
+        <td>Email</td>
+        <td><input type="text" name="Email" required></td>
+        </tr>
+        <tr>
+        <td>Phone</td>
+        <td><input type="text" name="Phone" required></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>
+          <select name="Gender">
+            <option value=" " selected> </option>
+            <option value="male"> male </option>
+            <option value="female"> menu type </option>
+          </select>
+        </td>
+        </tr>
+        <tr>
+        <td><input type="submit" value="Save" ></td>
+        </tr>
+
+    </table>
+    </form>
+
+  </body>
+</html>
