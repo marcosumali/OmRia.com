@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OmRia.com</title>
+</head>
+<body>
+    <header>
+        <%= title %>
+    </header>
+    <a href="/trips/add" style="text-decoration:none;color:dodgerblue;font-weight:bold">New Trip</a>
+    <table style="width:100%">
+        <tr align="left">
+            <th>Trip No.</th>
+            <th>Driver OmRia</th>
+            <th>Trip Max Capacity</th>
+            <th>Trip Status</th>
+            <th>Option</th>
+        </tr>
+        <% for(let i = 0; i < arrTrips.length; i++) { %>
+            <tr  align="left">
+                <td><%= arrTrips[i].id %></td>
+                <td><%= arrTrips[i].getFullName() %></td>
+                <td><%= arrTrips[i].MaxCapacity %></td>
+                <td><%= arrTrips[i].Status %></td>
+                <td><a href="/trips/edit/<%= arrTrips[i].id %>" style="text-decoration:none;color:dodgerblue;font-weight:bold">Edit</a> | <a href="/trips/delete/<%= arrTrips[i].id %>" onclick="return confirm('Delete this trip?')" style="text-decoration:none;color:dodgerblue;font-weight:bold">Delete</a></td>
+            </tr>
+        <% } %>
+    </table>
+    
+</body>
+</html>
