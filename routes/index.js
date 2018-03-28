@@ -3,7 +3,8 @@ const express = require('express');
 const routes = express.Router();
 
 routes.get('/', function(req,res) {
-    res.send('Welcome to OmRia.com - Omprengan Syariah');
+    res.render('index.ejs');
+
 })
 
 routes.use('/drivers', require('./drivers.js'))

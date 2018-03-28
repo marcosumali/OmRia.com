@@ -14,7 +14,19 @@
 
             <tr>
             <td>Trip Id</td>
-            <td><input type="text" name="RiderId" required></td>
+            <td><select name="TripId">
+                <option value="" selected> </option>
+              <%data2.forEach((data2) =>
+              {
+                data3.forEach((data3) =>
+                {
+                  if(data2.DriverId===data3.id){
+
+
+                %>
+                <option value="<%= data2.id %>"> <%= data3.getFullName()%> </option>
+              <%  }})})%>
+              </select></td>
             </tr>
             <tr>
             <td>Donation</td>
@@ -23,7 +35,7 @@
 
             <tr>
             <td>Riders</td>
-            <td><select name="TripId">
+            <td><select name="RiderId">
                 <option value="" selected> </option>
               <%data.forEach((data) =>
               {

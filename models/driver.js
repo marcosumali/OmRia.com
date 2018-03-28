@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
           args: true,
           msg: 'Incorrect email address'
         }
-      } 
+      }
     },
     Phone: DataTypes.STRING,
     Gender: DataTypes.STRING,
@@ -33,5 +33,9 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Driver.hasMany(models.Trip, {foreignKey: 'DriverId'});
   };
+
+  Driver.prototype.getFullName = function () {
+    return this.FirstName+' '+this.LastName
+  }
   return Driver;
 };
