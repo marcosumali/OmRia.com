@@ -9,12 +9,14 @@
     </header>
 
     <form method="POST">
+        Driver Id:
+        <input type="text" name="DriverId" style="height:25px;width:100%;border-radius: 5px;">
         Trip Max Capacity:
         <input type="text" name="MaxCapacity" style="height:25px;width:100%;border-radius: 5px;">
         Trip Status:
-        <input type="text" name="Status" style="height:25px;width:100%;border-radius: 5px;">
-        Driver Id:
-        <input type="text" name="DriverId" style="height:25px;width:100%;border-radius: 5px;">
+        <select name="Status" style="height:35px;width:100%;">
+            <option value="Open-Trip">Open Trip</option>
+        </select>
         <input type="submit" value="Add New Trip" >
     </form>
     

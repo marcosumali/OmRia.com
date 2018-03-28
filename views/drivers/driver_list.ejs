@@ -3,36 +3,43 @@
 <head>
     <title>OmRia.com</title>
 </head>
-<body>
-    <header>
-        <%= title %>
-    </header>
 
-    <a href="/drivers/add" style="text-decoration:none;color:dodgerblue;font-weight:bold">New Driver</a>
-    <table style="width:100%">
-        <tr align="left">
-            <th>NIK</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Gender</th>
-            <th>License Plate</th>
-            <th>Option</th>
-        </tr>
-        <% for(let i = 0; i < arrDrivers.length; i++) { %>
-            <tr  align="left">
-                <td><%= arrDrivers[i].id %></td>
-                <td><%= arrDrivers[i].FirstName %></td>
-                <td><%= arrDrivers[i].LastName %></td>
-                <td><%= arrDrivers[i].Email %></td>
-                <td><%= arrDrivers[i].Phone %></td>
-                <td><%= arrDrivers[i].Gender %></td>
-                <td><%= arrDrivers[i].LicensePlate %></td>
-                <td><a href="/drivers/edit/<%= arrDrivers[i].id %>" style="text-decoration:none;color:dodgerblue;font-weight:bold">Edit</a> | <a href="/drivers/delete/<%= arrDrivers[i].id %>" onclick="return confirm('Delete this driver?')" style="text-decoration:none;color:dodgerblue;font-weight:bold">Delete</a></td>
-            </tr>
-        <% } %>
-    </table>
+<% if(isLogin.status == true) { %>
+    <body>
+            <header>
+                <%= title %>
+            </header>
+            <!-- <a href="/drivers/add" style="text-decoration:none;color:dodgerblue;font-weight:bold">New Driver</a> -->
+            <table style="width:100%">
+                <tr align="left">
+                    <th>NIK</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                    <th>License Plate</th>
+                    <th>Password</th>
+                    <th>Option</th>
+                </tr>
+                <% for(let i = 0; i < arrDrivers.length; i++) { %>
+                    <tr  align="left">
+                        <td><%= arrDrivers[i].id %></td>
+                        <td><%= arrDrivers[i].FirstName %></td>
+                        <td><%= arrDrivers[i].LastName %></td>
+                        <td><%= arrDrivers[i].Email %></td>
+                        <td><%= arrDrivers[i].Phone %></td>
+                        <td><%= arrDrivers[i].Gender %></td>
+                        <td><%= arrDrivers[i].LicensePlate %></td>
+                        <td><%= arrDrivers[i].Password %></td>
+                        <td><a href="/drivers/edit/<%= arrDrivers[i].id %>" style="text-decoration:none;color:dodgerblue;font-weight:bold">Edit</a> | <a href="/drivers/delete/<%= arrDrivers[i].id %>" onclick="return confirm('Delete this driver?')" style="text-decoration:none;color:dodgerblue;font-weight:bold">Delete</a></td>
+                    </tr>
+                <% } %>
+            </table>
 
-</body>
+            <br><br>
+            <a href="/trips" style="text-decoration:none"><input type="button" value="Show Your Trips"></a>
+
+        </body>
+<% } %>
 </html>

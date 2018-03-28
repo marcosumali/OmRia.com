@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     LastName: DataTypes.STRING,
     Email: DataTypes.STRING,
     Phone: DataTypes.STRING,
-    Gender: DataTypes.STRING
+    Gender: DataTypes.STRING,
+    Password: DataTypes.STRING
   }, {});
   Rider.associate = function(models) {
     // associations can be defined here

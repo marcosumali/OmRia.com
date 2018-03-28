@@ -20,6 +20,5 @@ module.exports = (sequelize, DataTypes) => {
     return FullName;
   }
 
-
   return Trip;
 };
