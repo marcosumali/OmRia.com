@@ -20,6 +20,7 @@ module.exports = {
       Gender:"male",
       createdAt:new Date(),
       updatedAt:new Date(),
+      Password:"aaaaa"
     },
     {
       FirstName:"Lesley",
@@ -29,6 +30,7 @@ module.exports = {
       Gender:"female",
       createdAt:new Date(),
       updatedAt:new Date(),
+      Password:"bbbbb"
     },
     {
       FirstName:"Odette",
@@ -38,6 +40,7 @@ module.exports = {
       Gender:"female",
       createdAt:new Date(),
       updatedAt:new Date(),
+      Password:"ccccc"
     },
     {
       FirstName:"Matt",
@@ -47,6 +50,7 @@ module.exports = {
       Gender:"male",
       createdAt:new Date(),
       updatedAt:new Date(),
+      Password:"ddddd"
     },
     {
       FirstName:"Alucard",
@@ -56,6 +60,7 @@ module.exports = {
       Gender:"male",
       createdAt:new Date(),
       updatedAt:new Date(),
+      Password:"eeeee"
     }
     ],{})
   },

@@ -1,6 +1,6 @@
 id,DriverId,MaxCapacity,Status
-1,1,4,Open
-2,2,6,Open
-3,3,1,Open
-4,4,4,Open
-5,5,10,Open
+1,1,4,Open-Trip
+2,2,6,Open-Trip
+3,3,1,Open-Trip
+4,4,4,Open-Trip
+5,5,10,Open-Trip

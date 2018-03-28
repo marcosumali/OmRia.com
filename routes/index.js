@@ -12,6 +12,7 @@ const riders = require('./riders')
 const ridertrips = require('./ridertrips')
 routes.use('/riders',riders)
 routes.use('/ridertrips',ridertrips)
-
+routes.use('/login', require('./login'))
+routes.use('/register', require('./register'))
 
 module.exports = routes;

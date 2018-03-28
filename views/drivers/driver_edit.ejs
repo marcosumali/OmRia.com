@@ -5,9 +5,10 @@
 </head>
 <body>
     <header>
-        <%= title %>
+        <h1><%= title %></h1>
     </header>
-    <%= error%>
+    <a style="color:red"><b><i><%= error%></i></b></a>
+    <br><br>
     <form method="POST">
         First Name:
         <input type="text" name="FirstName" style="height:25px;width:100%;border-radius: 5px;" value="<%= driver.FirstName %>">
@@ -17,10 +18,15 @@
         <input type="text" name="Email" style="height:25px;width:100%;border-radius: 5px;" value="<%= driver.Email %>">
         Phone:
         <input type="text" name="Phone" style="height:25px;width:100%;border-radius: 5px;" value="<%= driver.Phone %>">
-        Gender:
-        <input type="text" name="Gender" style="height:25px;width:100%;border-radius: 5px;" value="<%= driver.Gender %>">
+        Gender:<br>
+        <select name="Gender" style="height:35px;width:100%;">
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+        </select>
         License Plate:
         <input type="text" name="LicensePlate" style="height:25px;width:100%;border-radius: 5px;" value="<%= driver.LicensePlate %>">
+        Password:
+        <input type="text" name="Password" style="height:25px;width:100%;border-radius: 5px;" value="<%= driver.Password %>">
         <input type="submit" value="Add New Driver" >
     </form>
     

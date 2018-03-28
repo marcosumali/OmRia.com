@@ -32,7 +32,8 @@ module.exports = {
         Gender: data[i][5],
         LicensePlate: data[i][6],
         createdAt: new Date(),
-        updatedAt: new Date()
+        updatedAt: new Date(),
+        Password: data[i][7]
       }
       input_data.push(obj);
     }
