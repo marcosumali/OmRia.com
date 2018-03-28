@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Update</h1>
+    <p style ="color:red"><%= data_error.error %></p>
+    <form name="form" method="POST" action="/riders/update/<%= data.id %>">
+    <table>
+
+        <tr>
+        <td>First Name</td>
+        <td><input type="text" name="FirstName" value="<%= data.FirstName %>" required></td>
+
+        </tr>
+        <tr>
+        <td>Last Name</td>
+        <td><input type="text" name="LastName" value="<%= data.LastName %>" required></td>
+        </tr>
+        <tr>
+        <td>Email</td>
+        <td><input type="text" name="Email" value="<%= data.Email %>" required></td>
+        </tr>
+        <tr>
+        <td>Phone</td>
+        <td><input type="text" name="Phone" value="<%= data.Phone %>" required></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>
+          <select name="Gender">
+
+            <% if(data.Gender==='male'){
+              %>
+                <option value="male" selected> male </option>
+            <%
+            }
+            else if(data.Gender==='female'){
+                %>
+            <option value="female" selected> female </option>
+                  <%
+            }
+            %>
+            <option value="male"> male </option>
+            <option value="female"> menu type </option>
+          </select>
+        </td>
+        </tr>
+
+        <td><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+
+  </body>
+</html>

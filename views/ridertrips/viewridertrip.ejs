@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <body>
+
+      <h1>List</h1>
+      <a href="/ridertrips/add">Add</a>
+      <table border='1'>
+          <tr>
+            <td><center>Id</center></td>
+            <td><center>TripId</center></td>
+            <td><center>RiderId</center></td>
+            <td><center>Donation</center></td>
+            <td colspan=2><center>Action</center></td>
+
+          </tr>
+        <% let i=1 %>
+        <% data.forEach(data =>{ %>
+          <tr>
+            <td><%= i++ %></td>
+            <td><%= data.TripId %></td>
+            <td><%= data.Rider.id %></td>
+            <td><%= my_helper.formatuang(data.Donation)  %></td>
+            <td><a href="/ridertrips/<%= data.id %>/edit">Update</a></td>
+            <td><a href="/ridertrips/<%= data.id%>/delete" onclick="return confirm('delete this ?');">Delete</a></td>
+          </tr>
+
+        <% })%>
+      </table>
+
+      <a href="/">Back</a>
+    </body>
+
+  </body>
+</html>

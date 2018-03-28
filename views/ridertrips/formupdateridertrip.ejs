@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+    <body>
+
+      <h1>Update</h1>
+      <p style ="color:red"><%= data_error.error %></p>
+      <form name="form" method="POST" action="/ridertrips/<%= data.id %>/edit">
+      <table>
+
+          <tr>
+          <td>Name</td>
+          <td><input type="text" name="TripId" value="<%= data.TripId %>" required></td>
+          </tr>
+          <tr>
+
+          <tr>
+          <td>Donation</td>
+          <td><input type="text" name="Donation" value="<%= data.Donation %>" required></td>
+          </tr>
+          <tr>
+          <td>Rider Id</td>
+          <td><select name="RiderId">
+
+            <%data2.forEach((data2) =>
+            {
+              if(data2.id===data.RiderId)
+              {
+              %>
+              <option value="<%= data2.id %>" selected> <%=data2.FirstName+' '+data2.LastName %> </option>
+              <%
+              }
+              else{
+              %>
+                <option value="<%= data2.id %>"> <%=data2.FirstName+' '+data2.LastName %> </option>
+            <%
+              }})%>
+            </select></td>
+          </tr>
+          <tr>
+
+          <td><input type="submit" value="Save" ></td>
+          </tr>
+      </table>
+      </form>
+
+  </body>
+</html>
