@@ -88,7 +88,7 @@ routes.post('/driver', function(req,res) {
     
         sendEmail(sessionData);
     
-        res.redirect('/drivers')
+        res.redirect('/')
     })
     .catch(err => {
         // console.log(err);
