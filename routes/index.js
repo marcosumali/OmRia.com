@@ -12,10 +12,14 @@ routes.get('/', function(req,res) {
         res.render('indexDriver.ejs');
     } else if(sessionData.rider) {
         console.log('rider masuk')
-
-
         res.render('indexRider.ejs');
     }
+})
+
+routes.get('/logout',function(req,res){
+  req.session.destroy(err=>{
+    res.redirect('/')
+  })
 })
 
 routes.use('/drivers', require('./drivers.js'))
