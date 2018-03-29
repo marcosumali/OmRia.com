@@ -3,15 +3,31 @@ module.exports = (function(){
   const routes = require('express').Router()
 
   routes.get('/', function (req, res) {
-    Rider.findAll()
-    .then(data => {
-      res.render('riders/viewrider.ejs',{data:data});
-      // res.send(data)
-    });
+
+    let sessionData = req.session;
+    // res.send(sessionData);
+
+    if (sessionData.rider) {
+      Rider.findAll()
+      .then(data => {
+        res.render('riders/viewrider.ejs',{data:data});
+        // res.send(data)
+      });
+    } else {
+      res.redirect('/login/rider');
+    }
+
   });
 
   routes.get('/add',function(req,res){
-    res.render('riders/formaddrider',{data_error:req.query})
+
+    let sessionData = req.session;
+
+    if (sessionData.rider) {
+      res.render('riders/formaddrider',{data_error:req.query})
+    } else {
+      res.redirect('/login/rider');
+    }
   })
 
   routes.post('/add',function(req,res){
@@ -31,9 +47,16 @@ module.exports = (function(){
   })
 
   routes.get('/update/:id',function(req,res){
-    Rider.findById(req.params.id).then(data=>{
-      res.render('riders/formupdaterider',{data_error:req.query,data:data})
-    })
+
+    let sessionData = req.session;
+
+    if (sessionData.rider) {
+      Rider.findById(req.params.id).then(data=>{
+        res.render('riders/formupdaterider',{data_error:req.query,data:data})
+      })  
+    } else {
+      res.redirect('/login/rider');
+    }
   })
 
   routes.post('/update/:id',function(req,res){
@@ -59,17 +82,24 @@ module.exports = (function(){
 
 
   routes.get('/delete/:id', function (req, res) {
-    Rider.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(data => {
-      res.redirect('/riders')
-      }).catch(err=>{
-        res.send(err)
-      });
-    })
 
+    let sessionData = req.session;
+
+    if (sessionData.rider) {
+      Rider.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(data => {
+        res.redirect('/riders')
+        }).catch(err=>{
+          res.send(err)
+        });  
+    } else {
+      res.redirect('/login/rider');
+    }
+
+  })
 
   return routes
 })()

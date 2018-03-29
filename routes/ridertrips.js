@@ -23,8 +23,11 @@ module.exports = (function(){
 
        Trip.findAll().then(data3=>{
         Driver.findAll().then(data2=>{
-            res.render('ridertrips/viewridertrip.ejs',{data:data,data2:data2,data3:data3});
-            // res.send(data)
+            Rider.getMister(req.session.rider.FirstName,req.session.rider.LastName).then(data4=>{
+              res.render('ridertrips/viewridertrip.ejs',{data:data,data2:data2,data3:data3,data4:data4});
+                // console.log(req.session.rider.FirstName);
+            })
+
           })
       })
 
