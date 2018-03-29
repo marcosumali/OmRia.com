@@ -12,7 +12,8 @@ routes.get('/', function(req,res) {
         res.render('indexDriver.ejs');
     } else if(sessionData.rider) {
         console.log('rider masuk')
-        console.log(sessionData.rider);
+
+
         res.render('indexRider.ejs');
     }
 })
