@@ -18,21 +18,18 @@ module.exports = (sequelize, DataTypes) => {
     return this.FirstName+' '+this.LastName
   }
 
-  Rider.getMister = function() {
+  Rider.getMister = function(value,value2) {
     return new Promise(function(resolve,reject){
-      Rider.findAll()
-      .then(data => {
-        if(data.gender==='Male'){
-          var dataGen='Mr. '
-        }
-        else if(data.gender==='Female'){
-          var dataGen='Mrs. '
-        }
+
+      // Rider.findAll()
+      // .then(data => {
+
+        var dataGen=value+' '+value2
         resolve(dataGen);
-      })
-      .catch(err => {
-        reject(err);
-      })
+      // })
+      // .catch(err => {
+      //   reject(err);
+      // })
     })
   }
 

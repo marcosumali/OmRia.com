@@ -37,6 +37,7 @@ module.exports = (function(){
       Email:req.body.Email,
       Phone:req.body.Phone,
       Gender:req.body.Gender,
+      Password:req.body.Password,
     }
     Rider.create(obj).then(data=>{
       res.redirect('/riders')
@@ -65,6 +66,7 @@ module.exports = (function(){
       Email:req.body.Email,
       Phone:req.body.Phone,
       Gender:req.body.Gender,
+      Password:req.body.Password,
     }
     Rider.update(obj,{
       where:{
