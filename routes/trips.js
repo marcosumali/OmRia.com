@@ -69,6 +69,7 @@ routes.post('/add', function(req,res) {
 
         Models.RiderTrip.create(obj1)
         .then(ridertrip => {
+            console.log('ini ridertrip masuk',ridertrip)
             res.redirect('/trips')
         })
 
