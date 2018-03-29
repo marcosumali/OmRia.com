@@ -43,6 +43,7 @@ module.exports = (function(){
       order: [['id','ASC']],
     })
     .then(data => {
+      
       Trip.findAll({
         order: [['id','ASC']],
         where : {
