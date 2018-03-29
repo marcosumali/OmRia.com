@@ -1,49 +1,61 @@
 'use strict';
-const {Rider,Trip,Driver} = require('../models')
+const models = require('../models/index')
 module.exports = (sequelize, DataTypes) => {
   var RiderTrip = sequelize.define('RiderTrip', {
-    TripId: DataTypes.INTEGER,
+    id: {
+      type :DataTypes.INTEGER,
+      primaryKey : true,
+      autoIncrement : true
+    },
     RiderId: {
       type :DataTypes.STRING,
+    },
+    TripId: {
+      type : DataTypes.INTEGER,
       validate :{
+        isSyariah(TripId,next)
+        {
+          RiderTrip.findAll({
+            where : {
+              TripId : TripId,
+            },
 
+          }).then(row4=>{
 
-        // isSyariah(RiderId,next)
-        // {
-        //   RiderTrip.findAll({
-        //     where : {
-        //       TripId : this.TripId,
-        //     }
-        //   }).then(row4=>{
-        //     Rider.findAll({
-        //       where : {
-        //         id : this.RiderId
-        //       }
-        //     }).then(row3=>{
-        //         Trip.findAll({
-        //
-        //           where : {
-        //             id : this.TripId
-        //           }
-        //         }).then(row2=>{
-        //           Driver.findById(row2.DriverId).then(row=>{
-        //             if(row.Gender==='Male' && row3.length===1 && row3.Gender==='Female'){
-        //               next()
-        //             }
-        //             else  if(row.Gender==='Female' && row3.length===0 && row3.Gender==='Male'){
-        //                 next()
-        //             }
-        //             else{
-        //               next('Not allowed man and woman not muhrim together in one place')
-        //             }
-        //           }).catch(err=>{
-        //             console.log(err);
-        //           })
-        //         })
-        //       })
-        //   })
-        //
-        // }
+            sequelize.models.Rider.findOne({
+              where : {
+                id : this.RiderId
+              }
+            }).then(row3=>{
+
+                sequelize.models.Trip.findOne({
+
+                  where : {
+                    id : this.TripId
+                  }
+                }).then(row2=>{
+                  console.log(row2.DriverId);
+                  sequelize.models.Driver.findById(row2.DriverId).then(row=>{
+
+                    if(row.Gender==='Male' && row4.length<2 && row3.Gender==='Female'){
+                      next('Not allowed man and woman not muhrim together in one place')
+
+                    }
+                    else  if(row.Gender==='Female' && row4.length<2 && row3.Gender==='Male'){
+                      next('Not allowed man and woman not muhrim together in one place')
+
+                    }
+                    else{
+                      next()
+                    }
+                  }).catch(err=>{
+                    console.log(err);
+                  })
+                })
+              })
+          })
+
+        }
       }
     },
     Donation: DataTypes.INTEGER,

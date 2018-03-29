@@ -16,6 +16,12 @@ routes.get('/', function(req,res) {
     }
 })
 
+routes.get('/logout',function(req,res){
+  req.session.destroy(err=>{
+    res.redirect('/')
+  })
+})
+
 routes.use('/drivers', require('./drivers.js'))
 routes.use('/trips', require('./trips.js'))
 const riders = require('./riders')
