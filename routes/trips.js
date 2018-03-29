@@ -130,9 +130,7 @@ routes.get('/delete/:id', function(req,res) {
                     .then(trip => {
                         res.redirect('/trips');
                     })
-    
                 }
-     
             })
         })    
     } else {
