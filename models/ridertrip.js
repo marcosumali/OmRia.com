@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       validate :{
         isSyariah(TripId,next)
         {
+        if(this.RiderId==!0){
           RiderTrip.findAll({
             where : {
               TripId : TripId,
@@ -54,6 +55,12 @@ module.exports = (sequelize, DataTypes) => {
                 })
               })
           })
+        }
+        else{
+
+            next()
+        }
+
 
         }
       }
