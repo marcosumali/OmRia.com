@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     RiderId: {
       type :DataTypes.STRING,
-
     },
     TripId: {
       type : DataTypes.INTEGER,

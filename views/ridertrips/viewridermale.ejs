@@ -9,6 +9,8 @@
 
       <h1>List</h1>
       <a href="/ridertrips/add">Add</a>
+      <a href="/ridertrips/add">See All Male Rider</a>
+      <a href="/ridertrips/add">See All Female Rider</a>
       <table border='1'>
           <tr>
             <td><center>Id</center></td>
@@ -25,7 +27,7 @@
             <td><%= i++ %></td>
 
             <td><a href="/ridertrips/<%= data.TripId %>/viewTrips"><%= data.TripId %></a></td>
-            <td><%= 
+            <td><%=
               data.Rider.getFullName()
             %></td>
             <td><%= data.Rider.Gender %></td>
