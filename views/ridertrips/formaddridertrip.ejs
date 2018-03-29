@@ -33,17 +33,7 @@
             <td><input type="text" name="Donation" required></td>
             </tr>
 
-            <tr>
-            <td>Riders</td>
-            <td><select name="RiderId">
-                <option value="" selected> </option>
-              <%data.forEach((data) =>
-              {
-                %>
-                <option value="<%= data.id %>"> <%=data.FirstName +' '+data.LastName%> </option>
-              <%})%>
-              </select></td>
-            </tr>
+          
             <tr>
             <td><input type="submit" value="Save" ></td>
             </tr>

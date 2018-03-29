@@ -43,10 +43,11 @@ module.exports = (function(){
       order: [['id','ASC']],
     })
     .then(data => {
+      
       Trip.findAll({
         order: [['id','ASC']],
         where : {
-          Status : 'Open'
+          Status : 'Open-Trip'
         }
 
       }).then(
@@ -64,7 +65,7 @@ module.exports = (function(){
   routes.post('/add',function(req,res){
     let obj={
       TripId:parseInt(req.body.TripId),
-      RiderId:parseInt(req.body.RiderId),
+      RiderId:req.session.rider.id,
       Donation:parseInt(req.body.Donation),
     }
     RiderTrip.create(obj).then(data=>{
@@ -86,7 +87,7 @@ module.exports = (function(){
   routes.post('/:id/edit',function(req,res){
     let obj = {
       TripId:req.body.TripId,
-      RiderId:req.body.RiderId,
+      RiderId:req.session.rider.id,
       Donation:req.body.Donation,
     }
     RiderTrip.update(obj,{
