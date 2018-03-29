@@ -7,59 +7,78 @@ module.exports = (function(){
 
   routes.get('/', function (req, res) {
 
-    RiderTrip.findAll({
-      order: [['id','ASC']],
-      where : {
-        RiderId: {
-          [Op.not]: 0           // status NOT FALSE
-        }
-      },
-     include: [{
-      model: Rider
-    }],
-   })
-   .then(data=>{
-     // Trip.findAll().then(data3 => {
+    let sessionData = req.session;
 
-       Trip.findAll().then(data3=>{
-        Driver.findAll().then(data2=>{
-            Rider.getMister(req.session.rider.FirstName,req.session.rider.LastName).then(data4=>{
-              res.render('ridertrips/viewridertrip.ejs',{data:data,data2:data2,data3:data3,data4:data4});
-                // console.log(req.session.rider.FirstName);
+    if (sessionData.rider) {
+      RiderTrip.findAll({
+        order: [['id','ASC']],
+        where : {
+          RiderId: {
+            [Op.not]: 0           // status NOT FALSE
+          }
+        },
+       include: [{
+        model: Rider
+      }],
+     })
+     .then(data=>{
+      //  res.send(data);
+       // Trip.findAll().then(data3 => {
+  
+         Trip.findAll().then(data3=>{
+          Driver.findAll().then(data2=>{
+
+              let result = [];
+              for(let i = 0; i < data.length; i++) {
+                  if(data[i].Rider.id == sessionData.rider.id) {
+                      result.push(data[i]);
+                  }
+              }
+
+              // res.send(result);
+
+              res.render('ridertrips/viewridertrip.ejs',{data:result,data2:data2,data3:data3});
+              // res.send(data)
             })
+        })
 
-          })
+        // })
       })
-
-
-
-      // })
-    })
-
+  
+    } else {
+      res.redirect('/login/rider');
+    }
   });
 
   routes.get('/add',function(req,res){
-    Rider.findAll({
-      order: [['id','ASC']],
-    })
-    .then(data => {
 
-      Trip.findAll({
+    let sessionData = req.session;
+
+    if (sessionData.rider) {
+      Rider.findAll({
         order: [['id','ASC']],
-        where : {
-          Status : 'Open-Trip'
-        }
+      })
+      .then(data => {
+        Trip.findAll({
+          order: [['id','ASC']],
+          where : {
+            Status : 'Open-Trip'
+          }
+  
+        }).then(
+          data2=>{
+            Driver.findAll().then(data3=>{
+              // res.send(data2)
+              res.render('ridertrips/formaddridertrip',{data_error:req.query,data:data,data2:data2,data3:data3})
+            })
+          }
+        )
+        // res.send(data)
+      });  
+    } else {
+      res.redirect('/login/rider');
+    }
 
-      }).then(
-        data2=>{
-          Driver.findAll().then(data3=>{
-            res.render('ridertrips/formaddridertrip',{data_error:req.query,data:data,data2:data2,data3:data3})
-          })
-        }
-      )
-
-      // res.send(data)
-    });
   })
 
   routes.post('/add',function(req,res){
@@ -76,12 +95,20 @@ module.exports = (function(){
   })
 
   routes.get('/:id/edit',function(req,res){
-    RiderTrip.findById(req.params.id).then(data=>{
-      Rider.findAll().then(data2=>{
-          res.render('ridertrips/formupdateridertrip',{data_error:req.query,data:data,data2:data2})
-      })
 
-    })
+    let sessionData = req.session;
+
+    if (sessionData.rider) {
+      RiderTrip.findById(req.params.id).then(data=>{
+        Rider.findAll().then(data2=>{
+            res.render('ridertrips/formupdateridertrip',{data_error:req.query,data:data,data2:data2})
+        })
+  
+      })  
+    } else {
+      res.redirect('/login/rider');
+    }
+    
   })
 
   routes.post('/:id/edit',function(req,res){
@@ -103,32 +130,41 @@ module.exports = (function(){
   })
 
   routes.get('/:id/delete', function (req, res) {
-    RiderTrip.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(data => {
-      res.redirect('/ridertrips')
-      }).catch(err=>{
-        res.send(err)
-      });
-    })
 
-    routes.get('/:id/viewTrips', function (req, res) {
-      Trip.findAll({
+    let sessionData = req.session;
+
+    if (sessionData.rider) {
+      RiderTrip.destroy({
         where: {
           id: req.params.id
-        },
-        include: [{
-         model: Driver
-       }]
+        }
       }).then(data => {
-        res.render('ridertrips/viewTrips',{data:data})
-        // res.send(data)
+        res.redirect('/ridertrips')
         }).catch(err=>{
           res.send(err)
         });
-      })
+  
+    } else {
+      res.redirect('/login/rider');
+    }
+
+  })
+
+  routes.get('/:id/viewTrips', function (req, res) {
+    Trip.findAll({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: Driver
+      }]
+    }).then(data => {
+      res.render('ridertrips/viewTrips',{data:data})
+      // res.send(data)
+      }).catch(err=>{
+        res.send(err)
+    });
+  })
 
       
 

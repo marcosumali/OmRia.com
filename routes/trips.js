@@ -59,7 +59,19 @@ routes.post('/add', function(req,res) {
 
     Models.Trip.create(obj)
     .then(trip => {
-        res.redirect('/trips')
+        // res.send(trip);
+
+        let obj1 = {
+            TripId: trip.id,
+            RiderId: 0,
+            Donation: 0
+        }
+
+        Models.RiderTrip.create(obj1)
+        .then(ridertrip => {
+            res.redirect('/trips')
+        })
+
     })
 })
 
