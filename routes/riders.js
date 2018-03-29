@@ -8,9 +8,9 @@ module.exports = (function(){
     // res.send(sessionData);
 
     if (sessionData.rider) {
-      Rider.findAll()
+      Rider.findAll({where:{id:sessionData.rider.id}})
       .then(data => {
-        res.render('riders/viewrider.ejs',{data:data});
+        res.render('riders/viewrider.ejs',{data:data,isLogin: sessionData});
         // res.send(data)
       });
     } else {
