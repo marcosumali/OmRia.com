@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
                     id : this.TripId
                   }
                 }).then(row2=>{
-                  console.log(row2.DriverId);
+                  // console.log(row2.DriverId);
                   sequelize.models.Driver.findById(row2.DriverId).then(row=>{
 
                     if(row.Gender==='Male' && row4.length<2 && row3.Gender==='Female'){
