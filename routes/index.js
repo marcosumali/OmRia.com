@@ -3,8 +3,17 @@ const express = require('express');
 const routes = express.Router();
 
 routes.get('/', function(req,res) {
-    res.render('index.ejs');
-
+    let sessionData = req.session;
+    // res.send(sessionData);
+    if(!sessionData.driver && !sessionData.rider) {
+        res.render('index.ejs');
+    } else if(sessionData.driver) {
+        console.log('driver masuk')
+        res.render('indexDriver.ejs');
+    } else if(sessionData.rider) {
+        console.log('rider masuk')
+        res.render('indexRider.ejs');
+    }
 })
 
 routes.use('/drivers', require('./drivers.js'))
