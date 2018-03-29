@@ -4,7 +4,7 @@ const Models = require('../models')
 const routes = express.Router();
 
 routes.get('/', function(req,res) {
-    
+
     let sessionData = req.session;
 
     if(sessionData.driver) {
@@ -40,7 +40,7 @@ routes.get('/add', function(req,res) {
         let obj = {
             title: 'New Trip OmRia.com Form',
         }
-        res.render('trips/trip_add.ejs', obj)   
+        res.render('trips/trip_add.ejs', obj)
     } else {
         res.redirect('/login/driver');
     }
@@ -51,10 +51,10 @@ routes.post('/add', function(req,res) {
     let data = req.body;
 
     let obj = {
-        DriverId: data.DriverId,
+        DriverId: req.session.driver.id,
         MaxCapacity: data.MaxCapacity,
-        Status: data.Status    
-    }    
+        Status: data.Status
+    }
     // res.send(obj)
 
     Models.Trip.create(obj)
@@ -90,7 +90,7 @@ routes.get('/edit/:id', function(req,res) {
                 trip: trip
             }
             res.render('trips/trip_edit.ejs', obj);
-        })   
+        })
     } else {
         res.redirect('/login/driver');
     }
@@ -105,7 +105,7 @@ routes.post('/edit/:id', function(req,res) {
         id: id,
         MaxCapacity: data.MaxCapacity,
         Status: data.Status,
-        DriverId: data.DriverId
+        DriverId: req.session.driver.id 
     }
 
     Models.Trip.update(obj, {where: {id:id}})
@@ -122,10 +122,10 @@ routes.get('/delete/:id', function(req,res) {
     if(sessionData.driver) {
 
         let id = req.params.id;
-    
+
         Models.Trip.findAll({include: [{model: Models.Driver}]})
         .then(trips => {
-    
+
             Models.Trip.findById(id)
             .then(trip => {
                 // res.send(trip)
@@ -136,7 +136,7 @@ routes.get('/delete/:id', function(req,res) {
                         error: 'Validation Error: Sorry, you cannot delete this trip since it is not yet close!'
                     }
                     res.render('trips/trip_list.ejs', obj)
-                    
+
                 } else {
                     trip.destroy({where:{id:id}})
                     .then(trip => {
@@ -144,7 +144,7 @@ routes.get('/delete/:id', function(req,res) {
                     })
                 }
             })
-        })    
+        })
     } else {
         res.redirect('/login/driver');
     }

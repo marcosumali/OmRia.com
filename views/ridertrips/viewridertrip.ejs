@@ -17,7 +17,7 @@
             <td><center>Rider</center></td>
             <td><center>Rider Gender</center></td>
             <td><center>Donation</center></td>
-            <td colspan=2><center>Action</center></td>
+            <!--<td colspan=2><center>Action</center></td>-->
 
           </tr>
         <% let i=1 %>
@@ -31,8 +31,8 @@
             %></td>
             <td><%= data.Rider.Gender %></td>
             <td><%= my_helper.formatuang(data.Donation)  %></td>
-            <td><a href="/ridertrips/<%= data.id %>/edit">Update</a></td>
-            <td><a href="/ridertrips/<%= data.id %>/delete" onclick="return confirm('delete this ?');">Delete</a></td>
+          <!--  <td><a href="/ridertrips/<%= data.id %>/edit">Update</a></td>-->
+          <!--  <td><a href="/ridertrips/<%= data.id %>/delete" onclick="return confirm('delete this ?');">Delete</a></td>-->
           </tr>
 
         <% })%>
